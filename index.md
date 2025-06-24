@@ -1,5 +1,5 @@
 # BlueStamp Lie Detector
-Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
+My project will be a close replica of a simple lie detector. It will include a GSR sensor that can check the electrical conductivity of your skin to see how much your sweating, as well as a pulseSensor that will check your hearbeat and monitor for sudden changes. These will help indicate whether a person is telling the truth; saying a lie will often cause nervousness. When the sensors detect unusual signals recieved, the buzzer will sound indicating that a lie has been told.
 
 You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
 ```HTML 
@@ -13,7 +13,7 @@ You should comment out all portions of your portfolio that you have not complete
 
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
-![Headstone Image](AlexW.HEIC)
+![Headstone Image](Headshot.png)
 
 <!---# Final Milestone
 
