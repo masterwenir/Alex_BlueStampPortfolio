@@ -87,7 +87,7 @@ Don't forget to place the link of where to buy each component inside the quotati
 
 # Starter Project
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=yE2564JcbFw&list=PLe-u_DjFx7eui8dmPGji-0-slT8KydYv_&index=78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yE2564JcbFw?si=SatDaVpdTPBzAajv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 For my starter project, I built a Retro Arcade Console. I chose this project because the project included soldering iron into the chip and connecting it with other parts as well as using nuts and screws to build it. It seems pretty complicated and I saw it as a great way to learn and explore more. In the end, I completed the build and created a working gaming console with display screens, a scoreboard, and 6 buttons used to play various games. It also includes a buzzer and can be powered on with both a USB and batteries. Some challenges I faced while building this was that my soldering pen didn't work, so that I had to use my neighbor's. Although this caused a slight delay in my progress, I ultimately finished this project. My next goal is to start my intensive project and build the physical componment by the next milestone.
 
