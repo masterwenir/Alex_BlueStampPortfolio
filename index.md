@@ -55,26 +55,162 @@ For my first milestone, my plan is to successfully build the hardware part of th
 - I also had a problem in privacy & security which didn't allow me to connect the arduino software to the USB
 - My plan now is to begin to code the lie detector and actually understand all the coding I'm doing
 
-<!--- # Schematics 
+# Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
+![Headstone Image](IMG_2448.png)
 
 # Code
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
 ```c++
+#define USE_ARDUINO_INTERRUPTS true
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <PulseSensorPlayground.h>
+
+// Pin definitions
+const int Pulse_Pin   = A0;
+const int GSR_Pin     = A2;
+const int Buzzer_Pin  = 9;
+const int LED_Pin     = 13;
+
+// Object declarations
+PulseSensorPlayground pulseSensor;
+LiquidCrystal_I2C lcd(0x27, 16, 2); // Use 0x3F if 0x27 doesn't work
+
+// Calibration data
+int baselineBPM = 0;
+bool calibrated = false;
+int gsrBaseline = 0;
+int gsrThreshold = 10;
+
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
-  Serial.println("Hello World!");
+  pinMode(Buzzer_Pin, OUTPUT);
+  pinMode(LED_Pin, OUTPUT);
+
+  // LCD setup
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0, 0);
+  lcd.print("Heart Monitor");
+
+  // PulseSensor setup
+  pulseSensor.analogInput(Pulse_Pin);
+  pulseSensor.setThreshold(520);
+  pulseSensor.blinkOnPulse(LED_Pin);
+  pulseSensor.begin();
+
+  // === Calibrate BPM ===
+  Serial.println("🔁 Calibrating BPM...");
+  lcd.setCursor(0, 1);
+  lcd.print("Calibrating BPM...");
+  
+  long totalBPM = 0;
+  int count = 0;
+  unsigned long startTime = millis();
+
+  while (millis() - startTime < 5000) {
+    if (pulseSensor.sawStartOfBeat()) {
+      int bpm = pulseSensor.getBeatsPerMinute();
+      if (bpm > 0) {
+        totalBPM += bpm;
+        count++;
+      }
+    }
+    delay(20);
+  }
+
+  if (count > 0) {
+    baselineBPM = totalBPM / count;
+    calibrated = true;
+    Serial.print("✅ Baseline BPM: ");
+    Serial.println(baselineBPM);
+
+    lcd.setCursor(0, 1);
+    lcd.print("Baseline BPM:    ");
+    lcd.setCursor(13, 1);
+    lcd.print(baselineBPM);
+  } else {
+    Serial.println("❌ Could not detect heartbeat.");
+    lcd.setCursor(0, 1);
+    lcd.print("Calibration Fail ");
+  }
+
+  delay(1000);
+
+  // === Calibrate GSR ===
+  Serial.println("🔁 Calibrating GSR...");
+  lcd.setCursor(0, 1);
+  lcd.print("Calibrating GSR..");
+  delay(1000);
+
+  long gsrTotal = 0;
+  for (int i = 0; i < 100; i++) {  // Reduced from 500 to 100 samples
+    gsrTotal += analogRead(GSR_Pin);
+    delay(2); // 2ms × 100 = ~200ms
+  }
+  gsrBaseline = gsrTotal / 100;
+  Serial.print("Baseline GSR: ");
+  Serial.println(gsrBaseline);
+
+  lcd.setCursor(0, 1);
+  lcd.print("Baseline GSR:    ");
+  lcd.setCursor(13, 1);
+  lcd.print(gsrBaseline);
+
+  delay(1000);
+  lcd.clear();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  if (!calibrated) return;
 
+  // === BPM Reading ===
+  if (pulseSensor.sawStartOfBeat()) {
+    int bpm = pulseSensor.getBeatsPerMinute();
+
+      // === GSR Reading (non-blocking sample) ===
+    long gsrSum = 0;
+    for (int i = 0; i < 50; i++) {  // Reduced from 500 to 50 samples
+      gsrSum += analogRead(GSR_Pin);
+      delay(2); // 2ms × 50 = ~100ms
+    }
+    int gsrAvg = gsrSum / 50;
+    int gsrDiff = gsrAvg - gsrBaseline;
+    Serial.print("BPM: ");
+    Serial.print(bpm);
+    Serial.print(" | GSR: ");
+    Serial.print(gsrAvg);
+    Serial.print(" | ΔGSR: ");
+    Serial.println(gsrDiff);
+
+    // === Top Row: BPM + GSR ===
+    lcd.setCursor(0, 0);
+    lcd.print("BPM:");
+    lcd.print(bpm);
+    lcd.print(" GSR:");
+    lcd.print(gsrAvg);
+    lcd.print("   "); // clear trailing chars
+
+    // === Bottom Row: Stress Detection ===
+    lcd.setCursor(0, 1);
+    if (bpm > baselineBPM + 10 || abs(gsrDiff) > gsrThreshold) {
+      lcd.print("Status: Stress!     ");
+      tone(Buzzer_Pin, 1000);
+      delay(200);
+      noTone(Buzzer_Pin);
+    } else {
+      lcd.print("Status: Normal      ");
+      noTone(Buzzer_Pin);
+    }
+  }
+
+  delay(20);
 }
 ```
 
-# Bill of Materials
+<!--- # Bill of Materials
 Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
 Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. 
 
