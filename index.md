@@ -1,12 +1,6 @@
 # BlueStamp Lie Detector
 My project will be a close replica of a simple lie detector. It will include a GSR sensor that can check the electrical conductivity of your skin to see how much your sweating, as well as a pulseSensor that will check your hearbeat and monitor for sudden changes. These will help indicate whether a person is telling the truth; saying a lie will often cause nervousness. When the sensors detect unusual signals recieved, the buzzer will sound indicating that a lie has been told.
 
-You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
-```HTML 
-<!--- This is an HTML comment in Markdown -->
-<!--- Anything between these symbols will not render on the published site -->
-```
-
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Alex W | Dougherty Valley | Mechanical Engineering | Incoming Freshmen
@@ -234,12 +228,3 @@ void loop() {
 For my starter project, I built a Retro Arcade Console. I chose this project because the project included soldering iron into the chip and connecting it with other parts as well as using nuts and screws to build it. It seems pretty complicated and I saw it as a great way to learn and explore more. In the end, I completed the build and created a working gaming console with display screens, a scoreboard, and 6 buttons used to play various games. It also includes a buzzer and can be powered on with both a USB and batteries. Some challenges I faced while building this was that my soldering pen didn't work, so that I had to use my neighbor's. Although this caused a slight delay in my progress, I ultimately finished this project. My next goal is to start my intensive project and build the physical componment by the next milestone.
 
 <img src="IMG_2349.png" alt="Arcade Console" width="400"/>
-
-
-# Other Resources/Examples
-One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
-- [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
-- [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
-- [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
-
-To watch the BSE tutorial on how to create a portfolio, click here.
