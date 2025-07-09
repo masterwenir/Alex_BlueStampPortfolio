@@ -11,8 +11,6 @@ You should comment out all portions of your portfolio that you have not complete
 |:--:|:--:|:--:|:--:|
 | Alex W | Dougherty Valley | Mechanical Engineering | Incoming Freshmen
 
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
-
 <img src="Headshot.png" alt="Headshot" width="550"/>
 
 <!---# Final Milestone
@@ -35,6 +33,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 For my second milestone, I have made a lot changes and improvements compared to my first milestone. What I first did was I made the individual codes for the pulseSensor and the gsrSensor. I learned to display readings and results in the arduino terminal window, and a major addition I made was that I added a LCD I2C screen that can display the results without having to look at the computer terminal and without the board having to be connected to the computer. Before I got to programming this though, I first had to combine the code for my gsrSensor and pulseSensor together. This was one of the major challenges of the lie detector project. I ran into an issue where the pulseSensor code would not work properly when connected with the gsrSensor, and this was because the function pulseSensor.sawStartOfBeat and pulseSensor.getBeatsPerMinute must be ran continuously in order to get accurate readings from the pulseSensor. When the gsrSensor code was added, it was put in front of the pulseSensor.getBeatsPerMinute and the 0.5~1 second delay resulted in inaccurate measurements from the pulseSensor that would go from 60 to 80 to 110 to 150 to 200. After re-ordering the code I was able to fix this issue and both sensors were able to get accurate measurements and values. I transfered displaying the results in the terminal window to the LCD screen, which is extremely satisfying to watch. One thing that did come to me as a surprise was that the lie detector doesn't actually tell lies. When I started this project, I thought that this lie detector would be 99% accurate at telling lies. It turns out, all a lie detector really does is monitor for changes in your behavior that could be an indicator for stress. In my lie detector, it monitors heartbeat and level of sweatiness to detect if a person is telling lies. When I'm telling lies, my heartbeat does not change much at all, and neither does my sweatiness level because I'm not very nervous when telling lies. Unless in an extremely important situation maybe like important job interviews these lie detectors could be more accurate as a person would be more nervous, but on normal occasions where a person tells a lie it would be extremely hard to figure out if they are lying or not. As I have made modifications to this lie detector and basically finished the entire project, my next milestone will be to start a new project, which is a waterballoon launcher on top of a car. My next milestone will also include working on my portfolio and engineering notebook. 
 
+<img src="IMG_2580.jpg" alt="LCD I2C Screen" width="700"/>
 
 # First Milestone
 
