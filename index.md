@@ -25,13 +25,11 @@ For your final milestone, explain the outcome of your project. Key details to in
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
 - A summary of key topics you learned about
-- What you hope to learn in the future after everything you've learned at BSE
+- What you hope to learn in the future after everything you've learned at BSE -->
 
 
 
 # Second Milestone
-
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -39,21 +37,13 @@ For your second milestone, explain what you've worked on since your previous mil
 - Technical details of what you've accomplished and how they contribute to the final goal
 - What has been surprising about the project so far
 - Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone -->
+- What needs to be completed before your final milestone
 
 # First Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0fZ_ZQBOVEA?si=D5DX-H6xp88KZkWD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-For my first milestone, my plan is to successfully build the hardware part of the lie detector:
-- I have wired all the components together
-- I did research on the GSR sensor and learned how to use it
-- I began to work on my code and have some simple code on getting readings from the GSR sensor
-- I faced challenges with understanding the wiring
-- I also had a problem in privacy & security which didn't allow me to connect the arduino software to the USB
-- My plan now is to begin to code the lie detector and actually understand all the coding I'm doing
+For my first milestone, my plan is to successfully build the hardware part of the lie detector. I managed to wire all the components together, which included a buzzer, the pulseSensor, the gsrSensor, and of course the arduino uno R3 board. At first, I did have trouble understanding the wiring diagrams but I eventually learned to read these diagrams and use them to connect pieces together. I connected these through a wireless breadboard, and ran extremely simple codes to test that the wires were all connected correctly, and this also introduced me to the arduino platform of coding and libraries and simple code that would be able to provide a reading from the sensors. I did research to understand the purpose of the GSR sensor, as well as how both the sensors worked. The pulseSensor uses an led reflection from your fingers to check differences in light absorption as blood flows through your fingers. The GSR sensor measures changes in the electrical conductivity of the skin, which changes due to sweat gland activity. When people lie, they are usually nervous and this results in sweating, which can be detected by the GSR sensor. I also had a problem when trying to connect the computer arduino software to my arduino board as the USB port didn't pop up in the options. Apparently this was a problem in the privacy & security section of system settings, where it didn't allow me to connect the arduino software to the USB. My plan now is to begin to code the actual lie detector as well as continuing to learn more about coding and adding on to my project.
 
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
