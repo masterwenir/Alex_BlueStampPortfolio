@@ -201,11 +201,36 @@ void loop() {
 ```
 
 # Bill of Materials
-| **Part** | **Note** | **Price** | **Link** |
-|:--:|:--:|:--:|:--:|
-| GSR Sensor | uses electrical conductivity to detect how much sweat a person is producing | $35.20 | <a href="https://a.co/d/iC6IGyz"> Link </a> |
-| PulseSensor | uses led light reflection to check the heartbeat of a person | $24.99 | <a href="https://a.co/d/2g7Ixup"> Link </a> |
-| Arduino Super Starter Kit Uno R3 | basic starter kit needed for any simple arduino project | $44.99 | <a href="https://a.co/d/iC6IGyz"> Link </a> |
+<table>
+  <thead>
+    <tr>
+      <th>Part</th>
+      <th>Note</th>
+      <th>Price</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GSR Sensor</td>
+      <td>uses electrical conductivity to detect how much sweat a person is producing</td>
+      <td>$35.20</td>
+      <td><a href="https://a.co/d/iC6IGyz">Link</a></td>
+    </tr>
+    <tr>
+      <td>PulseSensor</td>
+      <td>uses led light reflection to check the heartbeat of a person</td>
+      <td>$24.99</td>
+      <td><a href="https://a.co/d/2g7Ixup">Link</a></td>
+    </tr>
+    <tr>
+      <td>Arduino Super Starter Kit Uno R3</td>
+      <td>basic starter kit needed for any simple arduino project</td>
+      <td>$44.99</td>
+      <td><a href="https://a.co/d/iC6IGyz">Link</a></td>
+    </tr>
+  </tbody>
+</table>
 
 # Starter Project
 
