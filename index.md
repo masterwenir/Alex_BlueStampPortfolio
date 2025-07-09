@@ -218,6 +218,12 @@ void loop() {
       <td>$44.99</td>
       <td><a href="https://a.co/d/iC6IGyz">Link</a></td>
     </tr>
+    <tr>
+      <td>LCD I2C Screen</td>
+      <td>A 16 x 2 display screen</td>
+      <td>$7.95</td>
+      <td><a href="https://a.co/d/3UdkEFM">Link</a></td>
+    </tr>
   </tbody>
 </table>
 
