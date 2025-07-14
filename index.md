@@ -46,7 +46,7 @@ For my first milestone, my plan is to successfully build the hardware part of th
 ![Hardware Wiring](IMG_2448.png)
 ![Schematics Circuit Design](Schematics.jpg)
 
-# Code
+# Lie Detector Code
 
 ```c++
 #define USE_ARDUINO_INTERRUPTS true
@@ -193,6 +193,109 @@ void loop() {
   }
 
   delay(20);
+}
+```
+
+# Remote Car Code
+
+```c++
+#include <IRremote.h>
+
+#define IR_PIN 11  // IR receiver signal pin
+
+// Motor control pins (based on your setup)
+#define IN1 2
+#define IN2 3
+#define IN3 4
+#define IN4 5
+#define ENA 10
+#define ENB 9
+
+IRrecv irrecv(IR_PIN);
+decode_results results;
+
+void setup() {
+  Serial.begin(9600);
+  IrReceiver.begin(IR_PIN, ENABLE_LED_FEEDBACK);
+
+  // Motor pins
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+  pinMode(ENA, OUTPUT);
+  pinMode(ENB, OUTPUT);
+
+  // Start motors enabled
+  analogWrite(ENA, 255);  // adjust speed (0–255)
+  analogWrite(ENB, 255);
+}
+
+void stopMotors() {
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+}
+
+void forward() {
+  analogWrite(ENA, 255);  // adjust speed (0–255)
+  analogWrite(ENB, 255); 
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void backward() {
+  analogWrite(ENA, 255);  // adjust speed (0–255)
+  analogWrite(ENB, 255);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
+
+void left() {
+  analogWrite(ENB, 140);  // adjust speed (0–255)
+  analogWrite(ENA, 0);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void right() {
+  analogWrite(ENB, 0);  // adjust speed (0–255)
+  analogWrite(ENA, 140);
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
+
+void loop() {
+  if (IrReceiver.decode()) {
+    unsigned long code;
+    if (IrReceiver.decodedIRData.decodedRawData == "0x0") {
+      Serial.println("zero!");
+      return;
+    } else {
+      code = IrReceiver.decodedIRData.decodedRawData;
+    }
+    Serial.print("Code: 0x");
+    Serial.println(code, HEX);
+
+    switch (code) {
+      case 0xF609FF00: forward(); break;    // Up
+      case 0xF807FF00: backward(); break;   // Down
+      case 0xBB44FF00: right(); break;       // Left
+      case 0xBC43FF00: left(); break;      // Right
+      case 0xBF40FF00: stopMotors(); break; // OK / Stop
+    }
+
+    IrReceiver.resume();
+  }
 }
 ```
 
